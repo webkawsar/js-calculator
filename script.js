@@ -110,9 +110,13 @@ document.getElementById("divide").addEventListener("click", () => {
 document.getElementById("calculate").addEventListener("click", () => {
 
     const display = document.getElementById("display");
-    const regex = /['+'-*/]/ig;
+    const regex = /[^0-9=' ']{1}/ig;
     const position = display.innerText.search(regex);
     const operator = display.innerText.match(regex);
+
+    console.log(position, "Position");
+    console.log(operator, "operator");
+    console.log(display.innerText, "display.innerText");
 
     if(position == -1 && operator == null){
         return;
