@@ -137,7 +137,6 @@ document.getElementById("calculate").addEventListener("click", () => {
     }
 
     display.innerText = `= ${total}`;
-    console.log(total, "total");
 })
 
 
