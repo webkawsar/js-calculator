@@ -2,14 +2,7 @@
 document.getElementById("one").addEventListener("click", () => {
 
     const display = document.getElementById("display");
-    // console.log(typeof display.innerText);
     display.innerText = display.innerText == 0 ? 1 : display.innerText += 1;
-    // if(display.innerText == 0){
-    //     display.innerText = 1;
-    // }else {
-    //     display.innerText += 1;
-    // }
-
 })
 
 document.getElementById("two").addEventListener("click", () => {
@@ -72,12 +65,6 @@ document.getElementById("clear").addEventListener("click", () => {
     display.innerText = 0;
 })
 
-// document.getElementById("dot").addEventListener("click", () => {
-
-//     const display = document.getElementById("display");
-//     display.innerText = display.innerText == 0 ? '0.' : display.innerText += '.';
-// })
-
 
 
 
@@ -109,20 +96,14 @@ document.getElementById("divide").addEventListener("click", () => {
 
 
 
-
-
 document.getElementById("calculate").addEventListener("click", () => {
 
     const display = document.getElementById("display");
-
-
-    // const regex = /[^0-9=' ']{1}/ig;
     const regex = /['+'-*/]/ig;
     const position = display.innerText.search(regex);
     const operator = display.innerText.match(regex);
-    console.log(position, "Position");
-    console.log(operator, "operator");
-
+    // console.log(position, "Position");
+    // console.log(operator, "operator");
 
     if(position == -1 && operator == null){
         return;
@@ -148,26 +129,6 @@ document.getElementById("calculate").addEventListener("click", () => {
 
     display.innerText = `= ${total}`;
     console.log(total, "total");
-
-
-
-
-
-
-
-
-
-    // const beforeSlicePosition = display.innerText.indexOf('+');
-
-    // const length = display.innerText.length;
-
-    // const beforeNum = display.innerText.slice(0, beforeSlicePosition);
-    // const endNum = display.innerText.slice((beforeSlicePosition + 1), length)
-
-    // const total = parseFloat(beforeNum) + parseFloat(endNum);
-    // display.innerText = `= ${total}`;
-
-    // display.innerText = display.innerText > 0 ? display.innerText += '+' : display.innerText;
 })
 
 
