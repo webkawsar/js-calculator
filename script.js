@@ -3,7 +3,7 @@ document.getElementById("one").addEventListener("click", () => {
 
     const display = document.getElementById("display");
     const isIncludeEqual = display.innerText.includes("=");
-    display.innerText = display.innerText == 0 ? 1 : isIncludeEqual ? display.innerText : display.innerText += 1;
+    display.innerText =  isIncludeEqual ? display.innerText : display.innerText === '0' ? 1 : display.innerText += 1;
 
 })
 
@@ -11,63 +11,63 @@ document.getElementById("two").addEventListener("click", () => {
 
     const display = document.getElementById("display");
     const isIncludeEqual = display.innerText.includes("=");
-    display.innerText = display.innerText == 0 ? 2 : isIncludeEqual ? display.innerText : display.innerText += 2;
+    display.innerText =  isIncludeEqual ? display.innerText : display.innerText === '0' ? 2 : display.innerText += 2;
 })
 
 document.getElementById("three").addEventListener("click", () => {
 
     const display = document.getElementById("display");
     const isIncludeEqual = display.innerText.includes("=");
-    display.innerText = display.innerText == 0 ? 3 : isIncludeEqual ? display.innerText : display.innerText += 3;
+    display.innerText =  isIncludeEqual ? display.innerText : display.innerText === '0' ? 3 : display.innerText += 3;
 })
 
 document.getElementById("four").addEventListener("click", () => {
 
     const display = document.getElementById("display");
     const isIncludeEqual = display.innerText.includes("=");
-    display.innerText = display.innerText == 0 ? 4 : isIncludeEqual ? display.innerText : display.innerText += 4;
+    display.innerText =  isIncludeEqual ? display.innerText : display.innerText === '0' ? 4 : display.innerText += 4;
 })
 
 document.getElementById("five").addEventListener("click", () => {
 
     const display = document.getElementById("display");
     const isIncludeEqual = display.innerText.includes("=");
-    display.innerText = display.innerText == 0 ? 5 : isIncludeEqual ? display.innerText : display.innerText += 5;
+    display.innerText =  isIncludeEqual ? display.innerText : display.innerText === '0' ? 5 : display.innerText += 5;
 })
 
 document.getElementById("six").addEventListener("click", () => {
 
     const display = document.getElementById("display");
     const isIncludeEqual = display.innerText.includes("=");
-    display.innerText = display.innerText == 0 ? 6 : isIncludeEqual ? display.innerText : display.innerText += 6;
+    display.innerText =  isIncludeEqual ? display.innerText : display.innerText === '0' ? 6 : display.innerText += 6;
 })
 
 document.getElementById("seven").addEventListener("click", () => {
 
     const display = document.getElementById("display");
     const isIncludeEqual = display.innerText.includes("=");
-    display.innerText = display.innerText == 0 ? 7 : isIncludeEqual ? display.innerText : display.innerText += 7;
+    display.innerText =  isIncludeEqual ? display.innerText : display.innerText === '0' ? 7 : display.innerText += 7;
 })
 
 document.getElementById("eight").addEventListener("click", () => {
 
     const display = document.getElementById("display");
     const isIncludeEqual = display.innerText.includes("=");
-    display.innerText = display.innerText == 0 ? 8 : isIncludeEqual ? display.innerText : display.innerText += 8;
+    display.innerText =  isIncludeEqual ? display.innerText : display.innerText === '0' ? 8 : display.innerText += 8;
 })
 
 document.getElementById("nine").addEventListener("click", () => {
 
     const display = document.getElementById("display");
     const isIncludeEqual = display.innerText.includes("=");
-    display.innerText = display.innerText == 0 ? 9 : isIncludeEqual ? display.innerText : display.innerText += 9;
+    display.innerText =  isIncludeEqual ? display.innerText : display.innerText === '0' ? 9 : display.innerText += 9;
 })
 
 document.getElementById("zero").addEventListener("click", () => {
 
     const display = document.getElementById("display");
     const isIncludeEqual = display.innerText.includes("=");
-    display.innerText = display.innerText == 0 ? 0 : isIncludeEqual ? display.innerText : display.innerText += 0;
+    display.innerText =  isIncludeEqual ? display.innerText : display.innerText === '0' ? 0 : display.innerText += 0;
 })
 
 document.getElementById("clear").addEventListener("click", () => {
@@ -76,6 +76,41 @@ document.getElementById("clear").addEventListener("click", () => {
     display.innerText = 0;
 })
 
+
+document.getElementById("dot").addEventListener("click", () => {
+
+    const display = document.getElementById("display");
+    const isIncludeEqual = display.innerText.includes("=");
+
+    const findDotOperator = display.innerText.match(/[^0-9=' ']/ig);
+    const findArithOperator = display.innerText.match(/[^0-9=' '\.]{1}/ig);
+
+    if(isIncludeEqual){
+
+        display.innerText = display.innerText;
+    } else if(findDotOperator === null){
+
+        display.innerText += '.';
+    } else if(findArithOperator === null){
+
+        display.innerText = display.innerText;
+    }else if(findArithOperator){
+
+        const position = display.innerText.indexOf(findArithOperator[0]);
+        const restNum = display.innerText.slice((position + 1));
+        const isDot = restNum.includes('.');
+
+        if(!isDot){
+
+            display.innerText += '.';
+        }
+
+    } else {
+
+        display.innerText += '.';
+    }
+    
+})
 
 
 
@@ -110,9 +145,8 @@ document.getElementById("divide").addEventListener("click", () => {
 document.getElementById("calculate").addEventListener("click", () => {
 
     const display = document.getElementById("display");
-    const regex = /[^0-9=' ']{1}/ig;
-    const position = display.innerText.search(regex);
-    const operator = display.innerText.match(regex);
+    const position = display.innerText.search(/[^0-9=' '\.]{1}/ig);
+    const operator = display.innerText.match(/[^0-9=' '\.]{1}/ig);
 
     if(position == -1 && operator == null){
         return;
@@ -138,26 +172,4 @@ document.getElementById("calculate").addEventListener("click", () => {
 
     display.innerText = `= ${total}`;
 })
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
